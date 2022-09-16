@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
       table.float('capacidad',10,2)
       table.string('estado')
-      table.integer('id_mascota').unsigned().references('mascotas.id').nullable()      
+            
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
