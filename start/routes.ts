@@ -18,8 +18,14 @@
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route'
+import Route from '@ioc:Adonis/Core/Route'  
 
 Route.get('/', async () => {
   return { hello: 'world' }
 })
+
+Route.post("/login", "SeguridadController.login");
+Route.post("/forgot", "SeguridadController.forgotPassword");
+Route.post("/reset", "SeguridadController.resetPassword");
+Route.post("/logout", "SeguridadController.logout");
+
