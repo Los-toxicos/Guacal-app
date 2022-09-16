@@ -5,6 +5,12 @@ export default class GuacalAerolinea extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public id_guacal: number
+
+  @column()
+  public id_aerolinea: number
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

@@ -5,6 +5,18 @@ export default class Perfil extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
+  @column()
+  public id_usuario: number;
+
+  @column()
+  public celular: string;
+
+  @column()
+  public url_facebook: string;
+
+  @column()
+  public url_instagram: string;
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 
