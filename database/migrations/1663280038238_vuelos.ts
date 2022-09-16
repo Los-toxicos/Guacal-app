@@ -6,7 +6,12 @@ export default class extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
-
+      table.time('hora_salida')
+      table.time('hora_llegada').nullable()
+      table.integer('capacidad')
+      table.integer('id_aerolinea').unsigned().references('aerolineas.id')
+      table.integer('id_ruta').unsigned().references('rutas.id')
+      table.integer('id_veterinario').unsigned().references('veterinarios.id')      
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL
        */
