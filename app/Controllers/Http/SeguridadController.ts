@@ -4,13 +4,13 @@ import Hash from '@ioc:Adonis/Core/Hash';
 import PlantillaSeguridad from '../../Services/EmailsTemplates/PlantillaSeguridad';
 import EmailService from '../../Services/EmailService';
 
-export default class SeguridadsController {
+export default class SeguridadController {
 
     async login({ auth, request, response }) {
         const correo = request.input('correo')
         const password = request.input('contrasena')
         const el_usuario = await Usuario.query()
-            .where('correo', correo)
+            .where('email', correo)
             .firstOrFail()
         if (await Hash.verify(el_usuario.password, password)) {
             //Generación token
@@ -45,7 +45,7 @@ export default class SeguridadsController {
         let respuesta: Object = {}
         const correo = request.input('correo')
         const el_usuario = await Usuario.query()
-            .where('correo', correo)
+            .where('email', correo)
             .firstOrFail()
         if (!el_usuario) {
             respuesta = {

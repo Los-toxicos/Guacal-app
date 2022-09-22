@@ -24,6 +24,13 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
+Route.post("/usuario", "UsuariosController.store");
+Route.get("/usuario", "UsuariosController.index");
+
+Route.post("/rol", "RolesController.store");
+
+Route.post("/permiso", "PermisosController.store");
+
 Route.post("/login", "SeguridadController.login");
 Route.post("/forgot", "SeguridadController.forgotPassword");
 Route.post("/reset", "SeguridadController.resetPassword");

@@ -11,11 +11,9 @@ export default class UsuariosController {
     */
      public async index(ctx: HttpContextContract) {
 
-        /* let users: User[] = await User.query().preload('rol').preload('profile');
-        return users; */
-        let theEmailService:EmailService = new EmailService();
-        let correo = "juanj.sanchezg@autonoma.edu.co";
-        theEmailService.sendEmail(correo,"Nuevo inicio de sesion", "Usted acaba de iniciar sesion en el sistema");
+        let usuarios: Usuario[] = await Usuario.query().preload('rol');
+        return usuarios; 
+
     }
 
     /**
