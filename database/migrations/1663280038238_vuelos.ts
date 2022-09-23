@@ -5,10 +5,10 @@ export default class extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
-      table.dateTime('hora_salida')
-      table.dateTime('hora_llegada').nullable()
-      table.integer('capacidad')
+      table.increments('id').primary()
+      table.string('hora_salida').notNullable()
+      table.string('hora_llegada').nullable().defaultTo(null)
+      table.integer('capacidad').notNullable()
             
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

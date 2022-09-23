@@ -5,11 +5,11 @@ export default class extends BaseSchema {
 
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
-      table.string('nombre')
-      table.string('especie')
-      table.float('peso', 3, 2)
-      table.float('estatura', 3, 2)
+      table.increments('id').primary()
+      table.string('nombre').notNullable()
+      table.string('especie').notNullable()
+      table.float('peso').notNullable()
+      table.float('estatura').notNullable()
       
 
       /**
