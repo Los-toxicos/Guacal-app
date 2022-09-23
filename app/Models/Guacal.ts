@@ -8,10 +8,13 @@ export default class Guacal extends BaseModel {
   public id: number
 
   @column()
-  public capacidad: number
+  public tamano: string
 
   @column()
-  public estado: string  
+  public estado: string
+  
+  @column()
+  public id_mascota: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
@@ -25,7 +28,7 @@ export default class Guacal extends BaseModel {
   public mascota: HasOne<typeof Mascota>
 
   @manyToMany(() => Aerolinea, {
-    pivotTable: 'guacales_aerolineas',
+    pivotTable: 'guacal_aerolineas',
     pivotForeignKey: 'id_guacal',
     pivotRelatedForeignKey: 'id_aerolinea'
   })

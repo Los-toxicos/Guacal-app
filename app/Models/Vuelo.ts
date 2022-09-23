@@ -6,14 +6,23 @@ export default class Vuelo extends BaseModel {
   @column({ isPrimary: true })
   public id: number
 
-  @column.dateTime()
-  public hora_salida: DateTime
+  @column()
+  public hora_salida: string
   
-  @column.dateTime()
-  public hora_llegada: DateTime
+  @column()
+  public hora_llegada: string
 
   @column()
   public capacidad: number
+
+  @column()
+  public id_ruta: number
+
+  @column()
+  public id_aerolinea: number
+
+  @column()
+  public id_veterinario
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

@@ -30,7 +30,7 @@ export default class Aerolinea extends BaseModel {
   public rutas: ManyToMany<typeof Ruta>
 
   @manyToMany(() => Guacal, {
-    pivotTable: 'guacales_aerolineas',
+    pivotTable: 'guacal_aerolineas',
     pivotForeignKey: 'id_aerolinea',
     pivotRelatedForeignKey: 'id_guacal'
   })

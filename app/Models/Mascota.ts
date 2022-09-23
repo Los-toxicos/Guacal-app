@@ -19,6 +19,12 @@ export default class Mascota extends BaseModel {
   @column()
   public estatura: number
 
+  @column()
+  public id_usuario: number
+
+  @column()
+  public id_guacal: number
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

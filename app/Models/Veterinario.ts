@@ -11,6 +11,9 @@ export default class Veterinario extends BaseModel {
 
   @column()
   public especialidad: string
+
+  @column()
+  public id_vuelo:number
   
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
