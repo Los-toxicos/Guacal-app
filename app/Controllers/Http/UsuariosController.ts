@@ -21,8 +21,7 @@ export default class UsuariosController {
     */
     public async store({ request }: HttpContextContract) {
 
-        const body = request.body();
-        body.password = Encryption.encrypt(body.password);
+        const body = request.body();        
         const new_user = await Usuario.create(body)
         return new_user;
     }
@@ -42,16 +41,16 @@ export default class UsuariosController {
     public async update({ params, request }: HttpContextContract) {
 
         const body = request.body();
-        const user:Usuario = await Usuario.findOrFail(params.id);
-        user.name = body.name;
-        user.email = body.email;
-        user.password = Encryption.encrypt(body.password);
-        user.id_rol = body.id_rol;
+        const el_usuario:Usuario = await Usuario.findOrFail(params.id);
+        el_usuario.nombre = body.nombre;
+        el_usuario.correo = body.email;
+        el_usuario.contrasena = body.contrasena;
+        el_usuario.id_rol = body.id_rol;
         if (body.profile) {
-            body.profile.id_user = params.id;
+            body.profile.id_el_usuario = params.id;
             await this.setProfile(body.perfil);
         }
-        return user.save();
+        return el_usuario.save();
         
     }
     public async setProfile(info) {

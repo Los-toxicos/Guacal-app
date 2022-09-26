@@ -8,23 +8,20 @@ export default class SeguridadController {
 
     async login({ auth, request, response }) {
         const correo = request.input('correo')
-        const password = request.input('contrasena')
-        const el_usuario = await Usuario.query()
-            .where('email', correo)
-            .firstOrFail()
-        if (await Hash.verify(el_usuario.password, password)) {
+        const contrasena = request.input('contrasena')
+        const el_usuario = await Usuario.query().where('correo', correo).firstOrFail()
+        if (await Hash.verify(el_usuario.contrasena, contrasena)) {
             //Generación token
             const token = await auth.use('api').generate(el_usuario, {
                 expiresIn: '60 mins'
             })
-            let plantilla_correo: PlantillaSeguridad = new
-                PlantillaSeguridad()
+            let plantilla_correo: PlantillaSeguridad = new PlantillaSeguridad()
             let html = plantilla_correo.newLogin()
             let el_servicio_correo: EmailService = new EmailService();
             el_servicio_correo.sendEmail(correo, "Nuevo Inicio de Sesión", html)
             //Obtiene los datos correspondientes a la relación
             await el_usuario.load("rol");
-            el_usuario.password = ""
+            el_usuario.contrasena = ""
             return {
                 "token": token,
                 "usuario": el_usuario
@@ -44,9 +41,7 @@ export default class SeguridadController {
     async forgotPassword({ auth, request }) {
         let respuesta: Object = {}
         const correo = request.input('correo')
-        const el_usuario = await Usuario.query()
-            .where('email', correo)
-            .firstOrFail()
+        const el_usuario = await Usuario.query().where('correo', correo).firstOrFail()
         if (!el_usuario) {
             respuesta = {
                 "status": "error",
@@ -56,8 +51,7 @@ export default class SeguridadController {
             const token = await auth.use('api').generate(el_usuario, {
                 expiresIn: '60 mins'
             })
-            let plantilla_correo: PlantillaSeguridad = new
-                PlantillaSeguridad()
+            let plantilla_correo: PlantillaSeguridad = new PlantillaSeguridad()
             let html = plantilla_correo.forgotPassword(token.token)
             let el_servicio_correo: EmailService = new EmailService();
             el_servicio_correo.sendEmail(correo, "Solicitud restablecimiento de contraseña", html)
@@ -87,7 +81,7 @@ export default class SeguridadController {
                 message: "Este usuario no existe"
             }
         } else {
-            el_usuario.password = request.input('contrasena');
+            el_usuario.contrasena = request.input('contrasena');
             await el_usuario.save();
             await auth.use('api').revoke();
             respuesta = {

@@ -3,7 +3,7 @@ import Env from '@ioc:Adonis/Core/Env'
 export default class EmailService {
 
     sendEmail(emailTo, theSubject, theHTML) {
-        const sgMail = require(' @sendgrid/mail')
+        const sgMail = require('@sendgrid/mail')
         sgMail.setApiKey(Env.get('SENDGRID_API_KEY'))
         const msg = {
             to: emailTo, // Change to your recipient
