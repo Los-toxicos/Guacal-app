@@ -4,17 +4,20 @@ import PermisoRol from 'App/Models/PermisoRol'
 export default class PermisoRolsController {
 
     public async index(ctx: HttpContextContract) {
+
         let permisosRoles: PermisoRol[] = await PermisoRol.query()
         return permisosRoles;
     }
 
     public async store({ request }: HttpContextContract) {
+
         const body = request.body();
         const el_permiso_rol: PermisoRol = await PermisoRol.create(body);
         return el_permiso_rol;
     }
 
     public async show({ params }: HttpContextContract) {
+
         return PermisoRol.findOrFail(params.id);
     }
 
@@ -28,8 +31,8 @@ export default class PermisoRolsController {
     }
 
     public async destroy({ params }: HttpContextContract) {
-        const el_permiso_rol: PermisoRol = await
-            PermisoRol.findOrFail(params.id);
+        
+        const el_permiso_rol: PermisoRol = await PermisoRol.findOrFail(params.id);
         return el_permiso_rol.delete();
     }
 

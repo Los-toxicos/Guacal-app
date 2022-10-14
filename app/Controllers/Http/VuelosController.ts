@@ -1,4 +1,5 @@
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import Vuelo from 'App/Models/Vuelo';
 
 export default class VuelosController {
 
@@ -7,6 +8,8 @@ export default class VuelosController {
             */
     public async index(ctx: HttpContextContract) {
 
+        let vuelos: Vuelo[] = await Vuelo.query().preload('veterinario');
+        return vuelos;
     }
 
     /**
@@ -14,7 +17,9 @@ export default class VuelosController {
     */
     public async store({ request }: HttpContextContract) {
 
-
+        const body = request.body();
+        const new_vuelo = await Vuelo.create(body);
+        return new_vuelo;
     }
 
     /**
@@ -22,15 +27,25 @@ export default class VuelosController {
     */
     public async show({ params }: HttpContextContract) {
 
+        let vuelo = await Vuelo.query().where('id', params.id);
+        return vuelo;
     }
 
     /**
     * Actualiza la información de basado
     * en el identificador y nuevos parámetros
     */
-    public async update({ params }: HttpContextContract) {
+    public async update({ params, request }: HttpContextContract) {
 
-
+        const body = request.body();
+        const vuelo:Vuelo = await Vuelo.findOrFail(params.id)
+        vuelo.hora_salida = body.hora_salida;  
+        vuelo.hora_llegada = body.hora_llegada;  
+        vuelo.capacidad = body.capacidad;  
+        vuelo.id_ruta = body.id_ruta;  
+        vuelo.id_aerolinea = body.id_aerolinea;  
+        vuelo.id_veterinario = body.id_veterinario;                
+        return vuelo.save()
     }
 
     /**
@@ -38,6 +53,8 @@ export default class VuelosController {
     */
     public async destroy({ params }: HttpContextContract) {
 
+        const vuelo:Vuelo = await Vuelo.findOrFail(params.id)
+        return vuelo.delete();
     }
 
 }

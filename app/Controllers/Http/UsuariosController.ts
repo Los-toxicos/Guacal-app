@@ -11,7 +11,7 @@ export default class UsuariosController {
     */
      public async index(ctx: HttpContextContract) {
 
-        let usuarios: Usuario[] = await Usuario.query().preload('rol');
+        let usuarios: Usuario[] = await Usuario.query().preload('rol').preload('profile');
         return usuarios; 
 
     }
@@ -22,16 +22,16 @@ export default class UsuariosController {
     public async store({ request }: HttpContextContract) {
 
         const body = request.body();        
-        const new_user = await Usuario.create(body)
-        return new_user;
+        const new_usuario = await Usuario.create(body)
+        return new_usuario;
     }
 
     /**
     * Muestra la información de un solo usuario
     */
     public async show({ params }: HttpContextContract) {
-        let user = await Usuario.query().where("id", params.id).preload('profile')
-        return user;
+
+        return Usuario.findOrFail(params.id);
     }
 
     /**
