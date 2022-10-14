@@ -7,7 +7,7 @@ export default class ApiToken extends BaseModel {
   public id: number
 
   @column()
-  public user_id:number
+  public id_usuario:number
 
   @column()
   public name:string
@@ -25,7 +25,7 @@ export default class ApiToken extends BaseModel {
   public updatedAt: DateTime
 
   @belongsTo (() => Usuario,{
-    localKey:'user_id',
+    localKey:'id_usuario',
   })
   public usuario:BelongsTo<typeof Usuario>
 }
