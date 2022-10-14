@@ -70,6 +70,8 @@ export default class AuthMiddleware {
      * the config file
      */
     const guards = customGuards.length ? customGuards : [auth.name]
+    await auth.use('api').authenticate
+    console.log("El Usuario -->", JSON.stringify(auth.user))
     await this.authenticate(auth, guards)
     await next()
   }
