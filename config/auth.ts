@@ -52,7 +52,7 @@ const authConfig: AuthConfig = {
         type: 'api',
         driver: 'database',
         table: 'api_tokens',
-        foreignKey: 'user_id',
+        foreignKey: 'id_usuario',
       },
 
       provider: {
@@ -87,7 +87,7 @@ const authConfig: AuthConfig = {
         | of the mentioned columns to find their user record.
         |
         */
-        uids: ['email'],
+        uids: ['correo'],
 
         /*
         |--------------------------------------------------------------------------

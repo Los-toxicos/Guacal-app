@@ -18,8 +18,22 @@
 |
 */
 
-import Route from '@ioc:Adonis/Core/Route'
+import Route from '@ioc:Adonis/Core/Route'  
+
+
 
 Route.get('/', async () => {
   return { hello: 'world' }
 })
+
+import './routes/aerolineas'
+import './routes/guacales'
+import './routes/login'
+import './routes/mascotas'
+import './routes/permisos'
+import './routes/roles'
+import './routes/rutas'
+import './routes/usuarios'
+import './routes/veterniarios'
+import './routes/vuelos'
+
