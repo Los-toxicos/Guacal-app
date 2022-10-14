@@ -29,7 +29,7 @@ export default class Usuario extends BaseModel {
   public updatedAt: DateTime
 
   @hasOne(() => Perfil, {
-    foreignKey: 'id_user'
+    foreignKey: 'id_usuario'
   })
   public profile: HasOne<typeof Perfil>
 

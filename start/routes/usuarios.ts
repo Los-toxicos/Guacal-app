@@ -6,5 +6,5 @@ Route.group(() => {
     Route.put("/usuarios/:id", "UsuariosController.update");
     Route.delete("/usuarios/:id", "UsuariosController.destroy");
     
-}).middleware(['auth:api', 'permisos'])
+})/* .middleware(['auth:api']) */
 Route.post("/usuarios", "UsuariosController.store");
