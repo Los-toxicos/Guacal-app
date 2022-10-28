@@ -7,8 +7,8 @@ export default class GuacalsController {
             * Lista todos 
             */
     public async index(ctx: HttpContextContract) {
-        let guacales: Guacal[] = await Guacal.query().preload('mascota').preload('aerolineas')
-     //  let guacales: Guacal[] = await Guacal.query().preload('aerolineas');
+       // let guacales: Guacal[] = await Guacal.query().preload('mascota').preload('aerolineas')
+       let guacales: Guacal[] = await Guacal.query().preload('aerolineas');
         return guacales;
     }
 

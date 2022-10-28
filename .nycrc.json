@@ -1,0 +1,14 @@
+{
+  "reporter": ["lcov", "cobertura", "text", "text-summary"],
+  "include": ["**/*.ts"],
+  "exclude": ["serverless.ts", "**/index.ts", "**/*.schema.ts", "config/**/*.ts", "**/*.test.ts"],
+  "check-coverage": true,
+  "sourceMap": true,
+  "instrument": true,
+  "cache": true,
+  "all": false,
+  "branches": 100,
+  "functions": 100,
+  "lines": 100,
+  "statements": 100
+}
