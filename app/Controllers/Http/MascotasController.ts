@@ -8,7 +8,7 @@ export default class MascotasController {
             */
     public async index(ctx: HttpContextContract) {
 
-        let mascotas: Mascota[] = await Mascota.query().preload('usuario').preload('guacal');
+        let mascotas: Mascota[] = await Mascota.query();
         return mascotas;
     }
 
@@ -18,7 +18,7 @@ export default class MascotasController {
     public async store({ request }: HttpContextContract) {
 
         const body = request.body();
-        const new_mascota = await Mascota.create(body);
+        const new_mascota : Mascota = await Mascota.create(body);
         return new_mascota;
     }
 

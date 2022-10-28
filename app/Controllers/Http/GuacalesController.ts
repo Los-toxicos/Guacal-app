@@ -8,6 +8,7 @@ export default class GuacalsController {
             */
     public async index(ctx: HttpContextContract) {
         let guacales: Guacal[] = await Guacal.query().preload('mascota').preload('aerolineas')
+     //  let guacales: Guacal[] = await Guacal.query().preload('aerolineas');
         return guacales;
     }
 
@@ -17,7 +18,7 @@ export default class GuacalsController {
     public async store({ request }: HttpContextContract) {
 
         const body = request.body();
-        const new_guacal = await Guacal.create(body);
+        const new_guacal: Guacal = await Guacal.create(body);
         return new_guacal;
     }
 
@@ -41,7 +42,7 @@ export default class GuacalsController {
         guacal.tamano = body.tamano;
         guacal.estado = body.estado;        
         guacal.id_mascota = body.id_mascota;        
-        return guacal.save()
+        return guacal.save();
     }
 
     /**
