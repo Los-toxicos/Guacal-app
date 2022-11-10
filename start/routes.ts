@@ -20,19 +20,20 @@
 
 import Route from '@ioc:Adonis/Core/Route'  
 
+
+
 Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.post("/usuario", "UsuariosController.store");
-Route.get("/usuario", "UsuariosController.index");
-
-Route.post("/rol", "RolesController.store");
-
-Route.post("/permiso", "PermisosController.store");
-
-Route.post("/login", "SeguridadController.login");
-Route.post("/forgot", "SeguridadController.forgotPassword");
-Route.post("/reset", "SeguridadController.resetPassword");
-Route.post("/logout", "SeguridadController.logout");
+import './routes/aerolineas'
+import './routes/guacales'
+import './routes/login'
+import './routes/mascotas'
+import './routes/permisos'
+import './routes/roles'
+import './routes/rutas'
+import './routes/usuarios'
+import './routes/veterniarios'
+import './routes/vuelos'
 

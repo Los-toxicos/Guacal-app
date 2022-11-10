@@ -28,8 +28,8 @@ export default class RolesController {
     
     public async destroy({ params }: HttpContextContract) {
         let usuarios = await Usuario.query()
-            .where(' id_rol ', params.id)
-        if (usuarios) {
+            .where('id_rol', params.id)
+        if (usuarios.length>0) {
             return {
                 "error": "El rol tiene usuarios asociados ",
                 "usuarios": usuarios

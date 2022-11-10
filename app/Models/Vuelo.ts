@@ -22,7 +22,7 @@ export default class Vuelo extends BaseModel {
   public id_aerolinea: number
 
   @column()
-  public id_veterinario
+  public id_veterinario: number
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

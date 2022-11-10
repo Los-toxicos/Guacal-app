@@ -12,6 +12,9 @@ export default class extends BaseSeeder {
       },
       {
         nombre: 'Usuario'
+      }, 
+      {
+        nombre: 'Invitado'
       }
       
     ])

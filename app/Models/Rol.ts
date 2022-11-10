@@ -22,7 +22,7 @@ export default class Rol extends BaseModel {
   public users: HasMany<typeof Usuario>
 
   @manyToMany(() => Permiso, {
-    pivotTable: 'permiso_rol',
+    pivotTable: 'permiso_rols',
     pivotForeignKey: 'id_rol',
     pivotRelatedForeignKey: 'id_permiso'
 

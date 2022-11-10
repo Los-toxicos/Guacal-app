@@ -5,39 +5,39 @@ export default class extends BaseSeeder {
   public async run() {
     await Usuario.createMany([
       {
-        name: 'Juan José Sánchez',
-        email:'juanj.sanchezg@autonoma.edu.co',
-        password:'hola123',
+        nombre: 'Juan José Sánchez',
+        correo:'juanj.sanchezg@autonoma.edu.co',
+        contrasena:'hola123',
         id_rol: 1
       },
       {
-        name:'Valeria Estrada',
-        email:'valreia.estradal@autonoma.edu.co',
-        password:'hola123',
+        nombre:'Valeria Estrada',
+        correo:'valreia.estradal@autonoma.edu.co',
+        contrasena:'hola123',
         id_rol: 1
       },
       {
-        name:'Felipe Buitrago',
-        email:'felipe.buitragoca@autonoma.edu.co',
-        password:'hola123',
+        nombre:'Felipe Buitrago',
+        correo:'felipe.buitragoca@autonoma.edu.co',
+        contrasena:'hola123',
         id_rol: 2
       },
       {
-        name:'Joe Doe',
-        email:'jujo00sg@gmail.com',
-        password:'hola123',
+        nombre:'Joe Doe',
+        correo:'jujo00sg@gmail.com',
+        contrasena:'hola123',
         id_rol: 2
       },
       {
-        name:'Jane Doe',
-        email:'jujo00sg@hotmail.com',
-        password:'hola123',
+        nombre:'Jane Doe',
+        correo:'jujo00sg@hotmail.com',
+        contrasena:'hola123',
         id_rol: 3
       },
       {
-        name:'Pepito Perez',
-        email:'jujo00sg@icloud.com',
-        password:'hola123',
+        nombre:'Pepito Perez',
+        correo:'jujo00sg@icloud.com',
+        contrasena:'hola123',
         id_rol: 3
       }
     ])
