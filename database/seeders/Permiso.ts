@@ -192,7 +192,28 @@ export default class extends BaseSeeder {
       {
         url: '/vuelos/?',
         metodo: 'delete'
-      }
+      },
+      /* Perfiles */
+      {
+        url: '/perfiles',
+        metodo: 'post'
+      },
+      {
+        url: '/perfiles',
+        metodo: 'get'
+      },
+      {
+        url: '/perfiles/?',
+        metodo: 'get'
+      },
+      {
+        url: '/perfiles/?',
+        metodo: 'put'
+      },
+      {
+        url: '/perfiles/?',
+        metodo: 'delete'
+      },
     ])
   }
 }
